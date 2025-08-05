@@ -342,27 +342,3 @@ python -m pytest tests/
 flake8 .
 black .
 ```
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-- 📖 **Documentation**: Check the [docs/](docs/) folder
-- 🐛 **Bug Reports**: [Create an issue](https://github.com/yourusername/chat-keyword-batch-processor/issues)
-- 💬 **Discussions**: [Join discussions](https://github.com/yourusername/chat-keyword-batch-processor/discussions)
-- 📧 **Email**: your-email@example.com
-
-## 🙏 Acknowledgments
-
-- HCX API for AI-powered classification
-- SQLAlchemy for database abstraction
-- Docker for containerization
-- Open source community for various dependencies
-
----
-
-⭐ **Star this repository if you find it useful!**
-
-Made with ❤️ for the open source community.
