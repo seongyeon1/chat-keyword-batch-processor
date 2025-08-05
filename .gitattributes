@@ -1,0 +1,13 @@
+# .env 파일은 항상 LF 줄바꿈 사용
+.env text eol=lf
+.env.example text eol=lf
+
+# 스크립트 파일들도 LF 줄바꿈 사용
+*.py text eol=lf
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Docker 관련 파일들
+Dockerfile text eol=lf
+docker-compose.yml text eol=lf 

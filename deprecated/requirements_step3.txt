@@ -1,0 +1,28 @@
+# 3단계: CLI 및 로깅 패키지 추가
+
+# 1-2단계 (기본 + 데이터 처리)
+python-dotenv==1.0.0
+requests==2.31.0
+pymysql==1.0.3
+sqlalchemy==1.4.53
+httpx==0.24.1
+nest_asyncio==1.5.8
+tenacity==8.2.3
+pydantic==1.10.14
+PyYAML==6.0.1
+numpy==1.24.4
+pandas==2.0.3
+openpyxl==3.1.2
+psutil==5.9.8
+
+# 3단계 추가: CLI 및 로깅
+click==8.1.7
+rich==13.7.1
+tqdm==4.66.4
+colorlog==6.8.2
+
+# 4단계 추가: 비동기 데이터베이스
+aiomysql==0.2.0
+
+# 5단계 추가: 메모리 모니터링
+memory-profiler==0.61.0 

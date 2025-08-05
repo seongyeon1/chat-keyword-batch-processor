@@ -1,0 +1,73 @@
+services:
+  batch-keywords:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: batch-keywords
+    restart: unless-stopped
+    
+    # 환경변수 파일 로드
+    env_file:
+      - .env
+    
+    # 환경 변수 설정
+    environment:
+      - TZ=Asia/Seoul
+      - CRON_SCHEDULE=0 1 * * *  # 매일 새벽 1시
+      - CRON_EMAIL=true
+      - CLEANUP_ENABLED=true
+      - CLEANUP_DAYS=30
+      - DOCKER=true  # Docker 환경임을 명시
+      - PYTHONPATH=/app
+    
+    # 볼륨 마운트
+    volumes:
+      - ./.env:/app/.env:ro
+      - ./logs:/app/logs
+      - ./reports:/app/reports
+      - ./temp:/app/temp
+    
+    # 포트 노출 (필요 시)
+    # ports:
+    #   - "8080:8080"  # 웹 인터페이스가 있다면
+    
+    # 헬스체크
+    healthcheck:
+      test: ["CMD", "python", "cli.py", "status"]
+      interval: 30s
+      timeout: 15s
+      retries: 3
+      start_period: 60s
+    
+    # 로그 설정
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    
+    # 네트워크 설정 (필요 시 데이터베이스 연결용)
+    # networks:
+    #   batch-network:
+    
+    # 메모리 제한 (선택사항)
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 512M
+
+# 네트워크 정의 (필요 시)
+# networks:
+#   batch-network:
+#     driver: bridge
+
+# 볼륨 정의 (호스트 디렉토리 사용 시 불필요, 명명된 볼륨 사용 시 활성화)
+# volumes:
+#   batch_logs:
+#     driver: local
+#   batch_reports:
+#     driver: local
+#   batch_temp:
+#     driver: local
